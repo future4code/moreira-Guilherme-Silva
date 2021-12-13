@@ -12,11 +12,11 @@ function retornaTamanhoArray(array) {
 function retornaArrayInvertido(array) {
     const arrayInvertido = []
     let j = 0
-  for (let i = array.length - 1; i >= 0; i--) {
+    for (let i = array.length - 1; i >= 0; i--) {
     arrayInvertido[j] = array[i]
     j++
-  }
-  return arrayInvertido
+    }
+    return arrayInvertido
 }
 
 // EXERCÍCIO 03
@@ -61,7 +61,13 @@ function retornaNumerosParesElevadosADois(array) {
 
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
-  
+    let maiorNumero = array[0]
+    for (termo of array) {
+        if (termo > maiorNumero) {
+            maiorNumero = termo
+        }
+    }
+    return maiorNumero
 }
 
 // EXERCÍCIO 07
