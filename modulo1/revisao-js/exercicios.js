@@ -21,7 +21,20 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-  
+  const arrayOrdenado = []
+  const tamanhoArray = array.length
+  let indice
+  for (let i = 0; i < tamanhoArray; i++) {
+    arrayOrdenado[i] = 999999999999
+    for (let j = 0; j < tamanhoArray; j++) {
+        if (array[j] < arrayOrdenado[i]) {
+            arrayOrdenado[i] = array[j]
+            indice = j
+        }
+    }
+    array.splice(indice, 1)
+  }
+  return arrayOrdenado
 }
 
 // EXERCÍCIO 04
