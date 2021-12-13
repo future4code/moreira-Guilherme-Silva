@@ -172,10 +172,47 @@ function retornaContasComSaldoAtualizado(contas) {
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    const ordenar = (a, b) => {
+        if (a.nome < b.nome) {
+            return -1
+        } else if (a.nome > b.nome) {
+            return 1
+        } else {
+            return 0
+        }
+    }
+    return consultas.sort(ordenar)
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+    const ordenar = (a, b) => {
+        if (a.dataDaConsulta < b.dataDaConsulta) {
+            return -1
+        } else if (a.dataDaConsulta > b.dataDaConsulta) {
+            return 1
+        } else {
+            return 0
+        }
+    }
+
+    const mapSeparar = (item) => {
+        const separa = item.dataDaConsulta.split("/")
+        item.dataDaConsulta = new Date(`${separa[1]}/${separa[0]}/${separa[2]}`)
+        return item
+    }
+    const mapJuntar = (item) => {
+        const dia = item.dataDaConsulta.getDate()
+        const mes = item.dataDaConsulta.getMonth() +1
+        const ano = item.dataDaConsulta.getFullYear()
+        if (dia < 10 && mes < 10) {
+            item.dataDaConsulta = `0${dia}/0${mes}/${ano}` 
+        } else if (dia >= 10 && mes < 10) {
+            item.dataDaConsulta = `${dia}/0${mes}/${ano}`
+        } else if (dia >= 10 && mes >= 10) {
+            item.dataDaConsulta = `${dia}/${mes}/${ano}`
+        }
+        return item
+    }
+    return consultas.map(mapSeparar).sort(ordenar).map(mapJuntar)
 }
