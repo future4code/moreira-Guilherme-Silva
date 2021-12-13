@@ -40,17 +40,23 @@ function retornaArrayOrdenado(array) {
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
     const arrayPares = []
-  for (termo of array) {
-    if (termo % 2 == 0) {
-        arrayPares.push(termo)
+    for (termo of array) {
+        if (termo % 2 == 0) {
+            arrayPares.push(termo)
+        }
     }
-  }
-  return arrayPares
+    return arrayPares
 }
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+    const filtraPares = (termo) => {
+        return termo % 2 === 0
+    }
+    const elevarQuadrado = (termo) => {
+        return termo ** 2
+    }
+    return array.filter(filtraPares).map(elevarQuadrado)
 }
 
 // EXERCÍCIO 06
