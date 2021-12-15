@@ -1,0 +1,67 @@
+/* Cabeçalho */
+.cabecalho {
+    border: 5px;
+    background: #eeeeee;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.logo {
+    display: inline;
+    
+}
+
+.logo p{
+     margin-top: 0;
+     padding: 10px 0 0 15px;
+     font-size: 24px;
+     font-weight: bold;
+     color:darkred;
+ }
+
+ .corpo {
+    margin-top: 0;
+    padding: 0 0 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color:darkred;
+    text-align: center;
+ }
+
+.menu {
+    padding-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    margin: 0 100px 0 0;
+    padding: 10px;
+    border-radius: 24px;
+    background: #cccccc;
+    color: black;
+    font-weight: bold;
+}
+
+/* Rodapé */
+.rodape {
+    border: 5px;
+    background: #eeeeee;
+    padding-top: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.rodape p {
+    margin-top: 0;
+    
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+ }
+
+ .contatos img {
+     width: auto;
+     height: auto;
+     max-width: 10%;
+     padding-left: 17%;   
+ }
