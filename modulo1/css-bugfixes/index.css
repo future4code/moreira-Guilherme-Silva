@@ -81,7 +81,8 @@ div img {
     margin: 0 auto;
 }
 #container-de-descricao>ol {
-    padding: 15px 0px;
+    padding: 15px 0px;  
+    list-style-position: inside;
 }
 
 #container-para-comprar {
@@ -136,6 +137,14 @@ td button:active {
 .container-do-search input {
     border: none;
     border-bottom: 2px solid;
+}
+
+.container-do-search img:hover{
+    opacity: 0.5;
+}
+
+.container-do-search img:active{
+    opacity: 1;
 }
 
 #back-button {
