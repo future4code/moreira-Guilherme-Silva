@@ -38,6 +38,8 @@ div img {
 }
 
 .botao-amarelo {
+    display: block;
+    margin: 0 auto;
     background-color: #ffaf43;
     width: 250px;
     height: 40px;
