@@ -1,0 +1,170 @@
+/* Página Inicial */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Página Inicial - Header */
+header {
+    border-bottom: 2px solid #dddddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100%;
+}
+
+.logo {
+    display: inline;
+}
+.logo img {
+    height: 25px;
+    margin-left: 20px;
+    position: relative;
+    top:4px;
+}
+.logo p {
+    display: inline;
+    color: #480048;
+    font-size: 28px;
+    font-weight: 900;
+    margin-left: 20px;
+}
+
+.menu {
+    display: inline;
+    margin-left: 500px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #480048;
+    font-size: 20px;
+    padding: 0 10px;
+    text-decoration: underline;
+}
+
+.menu a:hover {
+    color: #300030;
+    font-weight: 900;
+}
+/* Página Inicial - Main */
+.home {
+    margin-top: 100px;
+    padding-bottom: 50px;
+    text-align: center; 
+}
+
+.home-titulo {
+    margin-bottom: 30px;
+    color: #480048;
+}
+
+.home-descricao {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-size: 18px;
+    width: 1000px; 
+}
+
+.home img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.home-sub-titulo {
+    font-size: 26px;
+    color: #480048;
+    font-weight: bold;
+}
+/* Formação */
+.formacao {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.formacao-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #480048;
+}
+
+.formacao-lista {
+    font-size: 18px;
+}
+
+.formacao-lista li {
+    margin: 0 0 15px 50px;
+}
+
+.formacao-lista u {
+    color: #480048;
+}
+/* Habilidades */
+.habilidades {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.habilidades-bloco {
+    display: inline-block;
+    padding: 0 2.5%;
+    width: 28%;
+    text-align: center;
+    
+}
+
+.habilidades-titulo {
+    display: inline;
+    color: #480048;
+    font-size: 26px;
+    font-weight: bold;
+}
+.habilidades ul li {
+    text-align: left;
+    list-style: inside;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.habilidades u {
+    color: #480048;
+}
+
+.habilidades img {
+    margin-top: 40px;
+    width: 100px;
+}
+/* Página Inicial - Footer */
+footer {
+    position: fixed;
+    bottom: 0;;
+    width: 100%;
+    height: 100px;
+    background: #480048;
+}
+footer p {
+    display: inline;
+    position: relative;
+    top:-20px;
+    margin-left: 20px;
+    font-size: 18px;
+    color: white;
+}
+
+.contatos {
+    display: inline;
+    margin-left: 700px;
+}
+.contatos img {
+    width: 50px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.contatos img:hover {
+    opacity: 0.5;
+}
