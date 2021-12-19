@@ -138,6 +138,169 @@ header {
     margin-top: 40px;
     width: 100px;
 }
+/* Contato */
+.contato {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.contato-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #480048;
+}
+
+.contato-descricao {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-size: 18px;
+    width: 1000px; 
+    text-align: justify;
+}
+
+.campo-nome, .campo-email {
+    display: inline;
+    margin: 0 0 0 190px;
+    font-size: 18px;
+    
+}
+
+input {
+    width: 300px;
+}
+
+.campo-mensagem {
+    margin: 30px 200px;
+    font-size: 18px;
+}
+
+.campo-mensagem input {
+    height: 100px;
+    width: 950px;
+}
+
+button {
+    margin-left: 200px;
+    width: 200px;
+    height: 30px;
+    background-color: #300030;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+    background-color: #480048;
+    font-weight: bold;
+}
+/* Projetos */
+.projetos {
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.projetos-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #480048;
+}
+
+.projetos-descricao {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-size: 18px;
+    width: 1000px; 
+    text-align: justify;
+}
+
+.projetos-imagens {
+    text-align: center;
+}
+
+.projetos-imagens img {
+    width: 150px;
+    margin: 0 50px;
+}
+
+.projetos-imagens-descricao {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.projetos-imagens-descricao p {
+    text-decoration: none;
+    display: inline;
+    margin: 0 50px;
+    padding: 10px;
+    font-size: 18px;
+    color: #480048;
+    font-weight: bold;
+    border: 2px solid #480048;
+    border-radius: 20px;
+}
+
+.projetos-imagens-descricao p:hover {
+    background-color: #480048;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #480048;
+    border-radius: 20px;
+}
+/* Projetos - Individiual */
+.individual {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+.individual img {
+    position: relative;
+    top: 20px;
+    margin-left: 40%;
+    margin-right: 20px;
+    width: 50px;
+}
+.individual-titulo {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #480048;
+}
+.individual .botao {
+    display: inline;
+    margin-left: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #480048;
+    font-weight: bold;
+    border: 2px solid #480048;
+    border-radius: 10px;
+}
+
+.individual .botao:hover {
+    background-color: #480048;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #480048;
+    border-radius: 10px;
+}
+
+.individual-descricao {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 1000px; 
+    text-align: center;
+}
+
+.individual-imagens {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.individual-imagens img {
+    vertical-align: top;
+    width: 400px;
+    margin: 0 10px 50px 10px;
+}
+
 /* Página Inicial - Footer */
 footer {
     position: fixed;
