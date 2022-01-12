@@ -12,6 +12,12 @@ import iconeSalvarBranco from '../../img/bookmark-white.png'
 import iconeSalvarPreto from '../../img/bookmark-black.png'
 import {IconeSemContador} from '../IconeSemContador/IconeSemContador'
 
+import iconeCompartilhar from '../../img/shared.png'
+import {SecaoCompartilhar} from '../SecaoCompartilhar/SecaoCompartilhar'
+import iconeInstagram from '../../img/instagram.png'
+import iconeFacebook from '../../img/facebook.png'
+import iconeTwitter from '../../img/twitter.png'
+
 const PostContainer = styled.div`
   border: 1px solid gray;
   width: 300px;
@@ -50,7 +56,8 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    salvo: false
+    salvo: false,
+    compartilhando: false
   }
 
   onClickCurtida = () => {
@@ -88,6 +95,33 @@ class Post extends React.Component {
     })
   }
 
+  onClickCompartilhar = () => {
+    this.setState({
+      compartilhando: !this.state.compartilhando
+    })
+  }
+
+  aoEnviarCompartilhar1 = () => {
+    this.setState({
+      compartilhando: false
+     })
+     alert("Você compartilhou com o Instagram!")
+  }
+
+  aoEnviarCompartilhar2 = () => {
+    this.setState({
+      compartilhando: false
+     })
+     alert("Você compartilhou com o Facebook!")
+  }
+
+  aoEnviarCompartilhar3 = () => {
+    this.setState({
+      compartilhando: false
+     })
+     alert("Você compartilhou com o Twitter!")
+  }
+
 
   render() {
     let iconeCurtida
@@ -102,6 +136,18 @@ class Post extends React.Component {
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+    }
+
+    let componenteCompatilhar
+
+    if(this.state.compartilhando) {
+      componenteCompatilhar = <SecaoCompartilhar 
+        icone1={iconeInstagram} 
+        icone2={iconeFacebook} 
+        icone3={iconeTwitter} 
+        onClickIcone1={this.aoEnviarCompartilhar1}
+        onClickIcone2={this.aoEnviarCompartilhar2}
+        onClickIcone3={this.aoEnviarCompartilhar3}/>
     }
 
     let iconeSalvar
@@ -134,11 +180,17 @@ class Post extends React.Component {
         />
 
         <IconeSemContador
+          icone={iconeCompartilhar}
+          onClickIcone={this.onClickCompartilhar}
+        />
+
+        <IconeSemContador
           icone={iconeSalvar}
           onClickIcone={this.onClickSalvar}
         />
       </PostFooter>
       {componenteComentario}
+      {componenteCompatilhar}
     </PostContainer>
   }
 }
