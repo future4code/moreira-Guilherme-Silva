@@ -12,11 +12,38 @@ const InputComentario = styled.input`
     margin-right: 5px;
 `
 
+const ContainerComentarios = styled.div`
+/* 	display:flex;
+	flex-direction: column;
+	justify-content: center; */
+    padding: 5px;
+`
+
 export class SecaoComentario extends Component {
 	state = {
-		comentario: ""
-
+		comentarios: [
+		{
+			comentario: ""
+	
+		}
+		]
 	}
+	
+	adicionaComentario = () => {
+
+		const novoComentario = {
+		  comentario: this.state.comentario
+		}
+	
+		const novosComentarios = [...this.state.comentarios, novoComentario] 
+	
+		this.setState({comentarios: novosComentarios})
+		this.setState({comentario: ""})
+		
+	  }
+
+	
+
 
 	onChangeComentario = (event) => {
 		this.setState({
@@ -26,13 +53,28 @@ export class SecaoComentario extends Component {
 	}
 
 	render() {
-		return <CommentContainer>
-			<InputComentario
+
+		const listaDeComentarios = this.state.comentarios.map((coment) => {
+			return ( <p>{coment.comentario}</p>   
+					)
+		  })
+
+
+		return <div>
+			<CommentContainer>
+			<InputComentario 
 				placeholder={'Comentário'}
 				value={this.state.comentario}
-				onChange={this.onChangeComentario}
+				onChange={this.onChangeComentario}		
+				
 			/>
-			<button onClick={this.props.aoEnviar}>Enviar</button>
-		</CommentContainer>
+
+			<button onClick={this.props.aoEnviar} onClick={this.adicionaComentario}>Enviar</button>
+	
+			</CommentContainer>
+			<ContainerComentarios>
+				{listaDeComentarios}
+				</ContainerComentarios>
+		</div>
 	}
 }
