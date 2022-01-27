@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Cadastro from "./components/Cadastro";
-import axios from "axios"
+import ListaUsuarios from "./components/ListaUsuarios";
+/* import DetalheUsuario from "./components/DetalheUsuario"; */
 
 const MainContainer = styled.div`
   /* border: 1px solid white;
@@ -9,119 +10,49 @@ const MainContainer = styled.div`
   color: white; */
 `
 
-const Button = styled.button`
-  background-color: #EB8C49;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  height: 20px;
-  margin-left: 10px;
-  :hover {
-      cursor: pointer;
-      background-color: #EB543E;
-      transition-duration: 1s;
-      transform: scale(1.2 , 1.2);
-  }  
-`
+
 
 class App extends React.Component {
 
   state = {
-    usuarios: [],
-    valorNome: "",
-    valorEmail: ""
+    telaAtual: "cadastro"
   }
 
-  atualizaValorNome = (event) => {
-    this.setState({valorNome: event.target.value})
-  }
-
-  atualizaValorEmail = (event) => {
-    this.setState({valorEmail: event.target.value})
-  }
-
-  adicionaUsuario = () => {
-    const body = {
-      name: this.state.valorNome,
-      email: this.state.valorEmail
+  escolheTela = () => {
+    switch (this.state.telaAtual) {
+      case "cadastro":
+        return <Cadastro irParaLista = {this.irParaLista} />
+      case "lista":
+        return <ListaUsuarios 
+                  irParaCadastro = {this.irParaCadastro} 
+                  irParaDetalhe = {this.irParaDetalhe}
+                />
+      /* case "detalhe":
+        return <DetalheUsuario irParaLista = {this.irParaLista} /> */
+      default:
+        return <div>Erro! Página não encontrada</div>
     }
-
-    const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
-    axios.post(url, body, {
-      headers: {
-        Authorization: "guilherme-silva-moreira"
-      }
-    })
-    .then((resposta => {
-      alert(`Usuário ${this.state.valorNome} adicionado com sucesso!`)
-      this.setState({valorNome: ""})
-      this.setState({valorEmail: ""})
-    }))
-    .catch(erro => {
-      alert("Erro ao criar usuário!")
-      /* console.log(erro.response) */
-    })
   }
 
-  mostraUsuarios = () => {
-    const url = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
-    axios.get(url, {
-      headers: {
-        Authorization: "guilherme-silva-moreira"
-    }})
-    .then(resposta => {
-      this.setState({usuarios: resposta.data})
-    })
-    .catch(erro => {
-      console.log(erro.message)
-    })
+  irParaCadastro = () => {
+    this.setState({telaAtual: "cadastro"})
   }
 
-  deletaUsuario = (id, nome) => {
-    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:${id}`
-    axios.delete(url, {
-      headers: {
-        Authorization: "guilherme-silva-moreira"
-      }
-    })
-    .then(resposta => {
-      alert(`Usuário ${nome} deletado com sucesso`)
-    })
-    .catch(erro => {
-      alert("Erro ao deletar")
-    })
+  irParaLista = () => {
+    this.setState({telaAtual: "lista"})
   }
 
-  componentDidMount = () => {
-    this.mostraUsuarios()
+  irParaDetalhe = () => {
+    this.setState({telaAtual: "detalhe"})
   }
 
   render() {
 
-    const usuariosRenderizados = this.state.usuarios.map(item => {
-      return <li>{item.name}<Button>Deletar</Button></li>
-    })
+    
 
     return (
       <MainContainer>
-        <div>
-          <Cadastro 
-          valorNome = {this.state.valorNome}
-          valorEmail = {this.state.valorEmail}
-          atualizaValorNome = {this.atualizaValorNome}
-          atualizaValorEmail = {this.atualizaValorEmail}
-          adicionaUsuario = {this.adicionaUsuario}
-          mostraUsuarios = {this.mostraUsuarios}
-          />
-          
-          <div>
-            <h1>Tela de Usuários</h1>
-            {usuariosRenderizados}
-            <p>Procurar Usuário</p>
-            <input type="text" placeholder="Nome do Usuário Para Busca" />
-            <button>Procurar</button>
-          </div>
-        </div>
+        {this.escolheTela()}
       </MainContainer>
     );
   }
