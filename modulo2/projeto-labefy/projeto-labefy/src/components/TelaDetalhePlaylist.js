@@ -1,5 +1,92 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components'
+
+
+const MainContainer = styled.div`
+    margin-left: 20px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: left;
+    
+    h2 {
+      text-decoration: underline;
+      text-align: center;
+    }
+  `
+
+const DetalhesCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 5px;
+  justify-content: center;
+  width: 600px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #023047;
+  color: white;
+`
+const Musica = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px white solid;
+  border-radius: 5px;
+`
+const Button = styled.div`
+  padding: 10px;
+  border: none;
+  text-align: center;
+
+  border-radius: 5px;
+  background-color: #ca6702;
+  color: white;
+  :hover {
+    
+    transition-duration: 1s;
+    background-color: #bb3e03;
+    cursor: pointer;
+  }
+`
+
+const CardAdicionar = styled.div`
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #03071e;
+  color: white;
+
+  input {
+    width: 300px;
+    height: 20px;
+  }
+`
+
+const ButtonAdicionar = styled.button`
+height: 30px;
+border: none;
+border-radius: 5px;
+width: 200px;
+background-color: #0077b6;
+color: white;
+
+:hover {
+  transform: scale(1.2, 1.2);
+  transition-duration: 1s;
+  background-color: #023e8a;
+  cursor: pointer;
+}
+`
 
 
 class TelaDetalhePlaylist extends React.Component {
@@ -86,20 +173,22 @@ class TelaDetalhePlaylist extends React.Component {
 
     const listaDetalhes = this.state.detalhes.map (detalhe => {
       return (
-      <p key={detalhe.id}>{detalhe.name} 
+      <Musica key={detalhe.id}>{detalhe.name} 
         <audio controls>
           <source src={detalhe.url} type="audio/mpeg" />
         </audio>
-        <button onClick={() => this.deletarMusica(detalhe.id)}>Deletar</button>
-      </p>)
+        <Button onClick={() => this.deletarMusica(detalhe.id)}>Deletar</Button>
+      </Musica>)
     })
 
     return (
-      <div>
-        <p>Tela Detalhes</p>
-        {/* {this.detalhePlaylist(this.props.idPlaylist)} */}
-        
-        <p>Adicionar Música</p>
+      <MainContainer>
+        <DetalhesCard>
+          <h2>{this.props.nomePlaylist}</h2>
+          {listaDetalhes}
+        </DetalhesCard>
+        <CardAdicionar>
+        <h2>Adicionar Música</h2>
         <input 
           placeholder='Nome da música'
           value={this.state.nomeMusica}
@@ -115,10 +204,9 @@ class TelaDetalhePlaylist extends React.Component {
           value={this.state.urlMusica}
           onChange={this.atualizaUrlMusica}
         />
-        <button onClick={() => this.adicionaMusica(this.props.idPlaylist)}>Adicionar Música</button>
-        <h2>{this.props.nomePlaylist}</h2>
-        {listaDetalhes}
-      </div>
+        <ButtonAdicionar onClick={() => this.adicionaMusica(this.props.idPlaylist)}>Adicionar Música</ButtonAdicionar>
+        </CardAdicionar>
+      </MainContainer>
     )
   }
 }

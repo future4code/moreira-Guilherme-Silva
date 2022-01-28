@@ -1,5 +1,44 @@
 import React from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+  const MainContainer = styled.div`
+  display: flex;
+  border: 1px solid white;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+  width: 800px;
+  padding: 10px;
+  margin: 50px auto;
+  background-color: #023047;
+  color: white;
+
+
+    input {
+      margin: 0 20px 0 100px;
+    }
+
+    h2 {
+      text-decoration: underline;
+    }
+  `
+  const Button = styled.button`
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  background-color: #0077b6;
+  color: white;
+
+  :hover {
+    transform: scale(1.2, 1.2);
+    transition-duration: 1s;
+    background-color: #023e8a;
+    cursor: pointer;
+  }
+  `
+
 
 class TelaCriacao extends React.Component {
 
@@ -35,15 +74,15 @@ class TelaCriacao extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Tela Criação</p>
+      <MainContainer>
+        <h2>Criação de Novas Playlists:</h2>
         <input 
         placeholder='Nome da Playlist' 
         value={this.state.nomePlaylist}
         onChange={this.atualizaNomePlaylist}
         />
-        <button onClick={this.criarPlaylist}>Criar Playlist</button>
-      </div>
+        <Button onClick={this.criarPlaylist}>Criar Playlist</Button>
+      </MainContainer>
     )
   }
 }
