@@ -10,6 +10,7 @@ const MainContainer = styled.div`
 const InputContainer = styled.div`
     display: flex;
     justify-content:space-between;
+    margin: 1% 2%;
 `
 const MensagemContainer = styled.div `
      display:flex;
@@ -38,7 +39,7 @@ const NomeMensagem = styled.div `
 `
 
 const InputNomeContainer = styled.input`
-    width: 20%;
+    width: 15%;
     border-radius: 5px;
     border: 1px solid lightgray;
     height: 25px;
@@ -52,7 +53,16 @@ const InputMensagemContainer = styled.input`
 
 const ButtonContainer = styled.button`
     width: 15%;
-    border: 1px solid lightgray;
+    background-color: #5bc0de;
+    border: none;
+    border-radius: 5px;
+    color:  white;
+    font-weight: bold;
+    :hover {
+        background-color: #337ab7;
+        transition-duration: 1s;
+        transform: scale(1.1, 1.1);
+    }
 `
 
 export class CamposContainer extends React.Component {
@@ -92,29 +102,24 @@ export class CamposContainer extends React.Component {
 
         const listaDeComponentes = this.state.mensagens.map((mensagem) => {
             if(mensagem.nome ==="") {
-                return 
-            } else if (mensagem.nome === "eu") {
+                return  ""
+            } else if (mensagem.nome.toLowerCase() === "eu") {
                 return <Mensagem>{mensagem.mensagem}</Mensagem>;
             } else {
                 return <Mensagem><NomeMensagem><strong>{mensagem.nome}</strong></NomeMensagem> 
                         <div>{mensagem.mensagem}</div></Mensagem>;
-            }
-            
+            }      
           })
 
         return <MainContainer>
             <MensagemContainer>
-                {listaDeComponentes}
-            
+                {listaDeComponentes}         
             </MensagemContainer>
-            <InputContainer>
-            
+            <InputContainer> 
                 <InputNomeContainer placeholder='Nome'  value={this.state.valorInputNome} onChange={this.onChangeInputNome}/>
                 <InputMensagemContainer placeholder='Mensagem' value={this.state.valorInputMensagem} onChange={this.onChangeInputMensaem}/>
-                <ButtonContainer onClick={this.AdicionaMensagem}>Enviar</ButtonContainer>
-                
-            </InputContainer>
-            
+                <ButtonContainer onClick={this.AdicionaMensagem}>Enviar</ButtonContainer>         
+            </InputContainer>       
         </MainContainer>
     }   
 
