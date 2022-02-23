@@ -28,7 +28,9 @@ const MainContainer = styled.div`
 
 function App() {
   return (
-    <BrowserRouter>
+    <MainContainer>
+      <GlobalStyle />
+      <BrowserRouter>
       <Routes>
         <Route index element={<HomePage/>} />
         {/* <Route path="/" element={<HomePage />} /> */}
@@ -40,6 +42,8 @@ function App() {
         <Route path="admin/trips/:id" element={<TripDetails />} />
       </Routes>
     </BrowserRouter>
+    </MainContainer>
+
  
     
   );

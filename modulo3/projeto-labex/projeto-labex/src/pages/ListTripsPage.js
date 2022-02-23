@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import { style } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { useEffect, useState } from 'react';
 
 const MainContainer = styled.div`
     display: flex;
@@ -35,39 +35,34 @@ const Header = styled.header`
     }
 `
 
-const ContainerBox = styled.main`
-    border-radius: 15px;
-    width: 20%;
-    padding: 10px 20px;
-    margin: 100px auto;
-    background-color: whitesmoke;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    text-align: center;
+const Containers = styled.div`
+    display: flex;
+    flex-wrap: wrap;
 `
 
-const Container1 = styled.div`
-    padding: 10px;
-    width: 40%;
-`
 const Cabecalho = styled.div`
     display: flex;
     align-items: center;
     gap: 5%;
     margin-left: 10%;
 `
+
+const ContainerBox = styled.main`
+    border-radius: 15px;
+    width: 20%;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+`
+
 const Informacoes = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 5%;
+    gap: 10%;
+    text-align: justify;
 `
-
-const Container2 = styled.div`
-    background-color: #F2E0C9;
-    border-radius: 15px;
-    padding: 10px;
-    width: 40%;
-`
-
 
 const Footer = styled.footer`
     padding-right: 40px;
@@ -95,22 +90,49 @@ function ListTrips() {
     let navigate = useNavigate()
     
     const voltar = () => {
-        navigate(-1)
+        navigate("/")
     }
     
     const irParaApplicationForm = () => {
         navigate("/trips/application")
     }
 
+    const [tripList, setTripList] = useState([])
+
+
+    const getTrips = () => {
+        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/guilherme-silva-moreira/trips"
+        axios.get(url)
+        .then((resp) => {
+            console.log(resp.data.trips)
+            setTripList(resp.data.trips)
+        })
+        .catch(err => {
+            alert("Erro")
+        })
+    }
+
+    useEffect(() => {
+        getTrips()
+    }, [])
+
+    const trips = tripList.map(trip => {
+        return (<ContainerBox>
+            <h2>{trip.name}</h2>
+            <Informacoes>
+                <p><strong>Descrição:</strong> {trip.description}</p>
+                <p><strong>Planeta:</strong> {trip.planet}</p>
+                <p><strong>Duração:</strong> {trip.durationInDays} dias</p>
+                <p><strong>Data da Viagem:</strong> {trip.date}</p>
+            </Informacoes>
+      </ContainerBox>)
+    })
+
     return (
       <MainContainer>
           <Header>
               <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
               <p>Encontre as melhores viagens espaciais!</p>
-              <Stack direction="row" spacing={5}>
-                <Button variant="contained">Área Privada</Button>
-                <Button variant="contained">Ver Viagens</Button>
-              </Stack>
           </Header>
           <Cabecalho>
             <h1>Lista de Viagens</h1>
@@ -119,23 +141,14 @@ function ListTrips() {
                 <Button onClick={irParaApplicationForm} variant="contained" color="success"><span class="material-icons">done</span></Button>
             </Stack>
         </Cabecalho>
-          <ContainerBox>
-            <h3>Nome</h3>
-                <Informacoes>
-                    <p>Descrição: xxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <p>Planeta: xxxxxxxxxxxx</p>
-                    <p>Duração: xxxxxxxxxx</p>
-                    <p>Data: xx/xx/xxxx</p>
-                </Informacoes>
-          </ContainerBox>
+        <Containers>
+            {trips} 
+        </Containers>
+        
   
           <Footer>
-              <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
-              <p>Encontre as melhores viagens espaciais!</p>
-              <Stack direction="row" spacing={5}>
-                <Button variant="contained">Área Privada</Button>
-                <Button variant="contained">Ver Viagens</Button>
-              </Stack>
+            <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
+            <p>Encontre as melhores viagens espaciais!</p>
           </Footer>
       </MainContainer>
       

@@ -1,8 +1,5 @@
 import styled from 'styled-components'
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import { style } from '@mui/system';
 
 const MainContainer = styled.div`
     display: flex;
@@ -99,10 +96,6 @@ function TripDetails() {
           <Header>
               <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
               <p>Encontre as melhores viagens espaciais!</p>
-              <Stack direction="row" spacing={5}>
-                <Button variant="contained">Área Privada</Button>
-                <Button variant="contained">Ver Viagens</Button>
-              </Stack>
           </Header>
   
           <ContainerBox>
@@ -142,10 +135,6 @@ function TripDetails() {
           <Footer>
               <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
               <p>Encontre as melhores viagens espaciais!</p>
-              <Stack direction="row" spacing={5}>
-                <Button variant="contained">Área Privada</Button>
-                <Button variant="contained">Ver Viagens</Button>
-              </Stack>
           </Footer>
       </MainContainer>
       

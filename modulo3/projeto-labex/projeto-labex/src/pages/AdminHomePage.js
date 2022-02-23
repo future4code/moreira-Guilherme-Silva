@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import { style } from '@mui/system';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -95,10 +93,6 @@ function AdminHome() {
           <Header>
               <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
               <p>Encontre as melhores viagens espaciais!</p>
-              <Stack direction="row" spacing={5}>
-                <Button variant="contained">Área Privada</Button>
-                <Button variant="contained">Ver Viagens</Button>
-              </Stack>
           </Header>
           <Cabecalho>
             <h1>Lista de Viagens</h1>
@@ -115,10 +109,6 @@ function AdminHome() {
           <Footer>
               <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
               <p>Encontre as melhores viagens espaciais!</p>
-              <Stack direction="row" spacing={5}>
-                <Button variant="contained" onClick={irParaLogin}>Área Privada</Button>
-                <Button variant="contained" onClick={irParaListTrips}>Ver Viagens</Button>
-              </Stack>
           </Footer>
       </MainContainer>
       

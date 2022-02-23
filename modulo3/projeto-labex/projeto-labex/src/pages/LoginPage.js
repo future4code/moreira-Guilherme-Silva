@@ -111,10 +111,6 @@ function Login() {
         <Header>
             <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
             <p>Encontre as melhores viagens espaciais!</p>
-            <Stack direction="row" spacing={5}>
-              <Button variant="contained">Área Privada</Button>
-              <Button variant="contained">Ver Viagens</Button>
-            </Stack>
         </Header>
 
         <ContainerBox>
@@ -136,10 +132,6 @@ function Login() {
         <Footer>
             <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
             <p>Encontre as melhores viagens espaciais!</p>
-            <Stack direction="row" spacing={5}>
-              <Button variant="contained">Área Privada</Button>
-              <Button variant="contained">Ver Viagens</Button>
-            </Stack>
         </Footer>
     </MainContainer>
     

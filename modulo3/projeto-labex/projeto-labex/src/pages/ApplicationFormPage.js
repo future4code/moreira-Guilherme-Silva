@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
 
 const MainContainer = styled.div`
     display: flex;
@@ -94,15 +95,22 @@ const Footer = styled.footer`
 `
 
 function ApplicationForm() {
+
+    let navigate = useNavigate()
+
+    const irParaLogin = () => {
+        navigate("login")
+    }
+
+    const irParaListTrips = () => {
+        navigate("/trips/list")
+    }
+
   return (
     <MainContainer>
         <Header>
             <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
             <p>Encontre as melhores viagens espaciais!</p>
-            <Stack direction="row" spacing={5}>
-              <Button variant="contained">Área Privada</Button>
-              <Button variant="contained">Ver Viagens</Button>
-            </Stack>
         </Header>
 
         <ContainerBox>
@@ -155,8 +163,8 @@ function ApplicationForm() {
             </Main>
             <Buttons>
                 <Stack direction="row" spacing={5}>
-                    <Button variant="contained" color="primary"><span class="material-icons">arrow_back</span></Button>
-                    <Button variant="contained" color="success"><span class="material-icons">done</span></Button>
+                    <Button onClick={irParaListTrips} variant="contained" color="primary"><span class="material-icons">arrow_back</span></Button>
+                    <Button onClick={irParaLogin} variant="contained" color="success"><span class="material-icons">done</span></Button>
                 </Stack>
             </Buttons>
         </ContainerBox>
@@ -164,10 +172,6 @@ function ApplicationForm() {
         <Footer>
             <h1><span class="material-icons">flight_takeoff</span>  LabeX</h1>
             <p>Encontre as melhores viagens espaciais!</p>
-            <Stack direction="row" spacing={5}>
-              <Button variant="contained">Área Privada</Button>
-              <Button variant="contained">Ver Viagens</Button>
-            </Stack>
         </Footer>
     </MainContainer>
     
