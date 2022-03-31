@@ -29,7 +29,7 @@ type user = {
     website: string
 }
 
-const users:user[] = [
+let users:user[] = [
     {
       id: 1,
       name: "Leanne Graham",
@@ -64,7 +64,7 @@ const users:user[] = [
     userId: number
 }
 
-const posts: post[] = [
+let posts: post[] = [
     {
       userId: 1,
       id: 1,
@@ -260,4 +260,32 @@ app.get("/posts/:userId", (req, res) => {
     })
     res.send(userPosts)
 
+})
+
+app.delete("/users/:id", (req, res) => {
+    let idUser = Number(req.params.id)
+
+    if (idUser > 0 && idUser <= 3) {
+        const newUsers = users.filter(user => {
+            return user.id != idUser
+        })
+        users = [...newUsers]
+        res.send("Usuário Deletado Com Sucesso!")
+    } else {
+        res.send("Erro ao Deletar Usuário!")
+    }
+})
+
+app.delete("/posts/:id", (req, res) => {
+    let idPost = Number(req.params.id)
+
+    if (idPost > 0 && idPost <= 30) {
+        const newPosts = posts.filter(post => {
+            return post.id != idPost
+        })
+        posts = [...newPosts]
+        res.send("Post Deletado Com Sucesso!")
+    } else {
+        res.send("Erro ao Deletar Post!")
+    }
 })
