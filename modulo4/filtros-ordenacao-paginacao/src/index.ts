@@ -1,32 +1,18 @@
+import { getAllUsersFilterByName } from './endpoints/getAllUsersFilterByName';
+import { app } from "./app";
+import { getAllUsers } from "./endpoints/getAllUsers";
+import { getAllUsersFilter } from "./endpoints/getAllUsersFilter";
+import { getAllUsersFilterByType } from './endpoints/getAllUsersFilterByType';
 
-import express, { Express } from "express";
-import knex from "knex";
-import cors from "cors";
-import dotenv from "dotenv";
-import { AddressInfo } from "net";
 
-dotenv.config();
+/* app.get("/users", getAllUsers) */
+// Ex1 a)
+/* app.get("/users", getAllUsersFilterByName) */
 
-export const connection = knex({
-	client: "mysql",
-	connection: {
-    host: process.env.DB_HOST,
-    port: 3306,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-  }
-});
+//Ex1 b)
+app.get("/users/:type", getAllUsersFilterByType)
 
-const app: Express = express();
-app.use(express.json());
-app.use(cors());
+//Ex2
 
-const server = app.listen(process.env.PORT || 3003, () => {
-    if (server) {
-       const address = server.address() as AddressInfo;
-       console.log(`Server is running in http://localhost: ${address.port}`);
-    } else {
-       console.error(`Failure upon starting server.`);
-    }
-});
+
+
