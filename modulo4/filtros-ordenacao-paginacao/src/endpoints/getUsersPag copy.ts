@@ -2,20 +2,21 @@ import { Request, Response } from "express"
 import { connection } from "../data/connection"
 
 
-export default async function selectUsersFilter(name:string, type: string):Promise<any> {
+export default async function selectAllUsers(page:number):Promise<any> {
+   const item = (page - 1) * 5
    const result = await connection.raw(`
       SELECT id, name, email, type
-      FROM aula48_exercicio WHERE name LIKE "%${name}%" AND type = "${type}";
+      FROM aula48_exercicio LIMIT 5 OFFSET ${item};
    `)
 
    return result[0]
 }
 
-export const getAllUsersFilter = async(req: Request,res: Response): Promise<void> =>{
+
+export const getUsersPag = async(req: Request,res: Response): Promise<void> =>{
    try {
-      const name = req.query.name as string
-      const type = req.params.type as string
-      const users = await selectUsersFilter(name, type)
+      const page = Number(req.query.page)
+      const users = await selectAllUsers(page)
 
       if(!users.length){
          res.statusCode = 404
