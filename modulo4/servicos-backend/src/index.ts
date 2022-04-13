@@ -1,4 +1,4 @@
-import { getAdress } from './endpoints/getAdress';
+import { createAddress } from './endpoints/createAddress';
 import express, {Express} from 'express'
 import cors from 'cors'
 import knex from "knex";
@@ -33,4 +33,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
     }
 });
 
-app.get("/ceps", getAdress)
+app.post("/ceps", createAddress)
