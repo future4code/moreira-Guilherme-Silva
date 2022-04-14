@@ -1,3 +1,6 @@
+import { searchPurchases } from './endpoints/searchPurchases';
+import { createPurchase } from './endpoints/createPurchase';
+import { searchProducts } from './endpoints/searchProducts';
 import { createProduct } from './endpoints/createProduct';
 import { searchUsers } from './endpoints/searchUsers';
 import { createUser } from './endpoints/createUser';
@@ -41,3 +44,7 @@ app.post("/users", createUser) //criar usuários
 app.get("/users", searchUsers) //pegar todos usuários
 // Uso da Tabela products
 app.post("/products", createProduct) //crir produtos
+app.get("/products", searchProducts) //pegar todos usuários
+// Uso da Tabela purchases
+app.post("/purchases", createPurchase) //criar usuários
+app.get("/users/:user_id/purchases", searchPurchases) //pegar todos produtos de um usuário

@@ -8,12 +8,12 @@ export const createProduct = async (req: Request, res: Response):Promise<void> =
     let {name, price, image_url} = req.body
     try {
         await connection.raw (`
-            INSERT INTO labecommerce_users
+            INSERT INTO labecommerce_products
                 (id, name, price, image_url)
             VALUES (
                 "${Date.now().toString()}",
                 "${name}",
-                ${Number(price)},
+                ${price},
                 "${image_url}"
             );
         `)
